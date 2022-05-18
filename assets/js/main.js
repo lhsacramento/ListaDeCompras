@@ -1,5 +1,15 @@
 const button = document.querySelector('.buttonAddIten');
 let id = 0;
+
+document.addEventListener('click',(e) => {
+    console.log(e.target);
+    if(e.target.classList.contains('isButton')){
+        const myParent = e.target.parentElement;
+        myParent.remove();
+    }
+});
+
+
 button.onclick = function(){
 
     const iten = getItem();
@@ -31,8 +41,7 @@ button.onclick = function(){
         newIten.appendChild(newItenQuant); 
         newIten.appendChild(newItenName);   
 
-        newItenButton.setAttribute('class',id);  
-        newItenButton.setAttribute('onclick','removeIten()');  
+        newItenButton.setAttribute('class','isButton');  
         newItenButton.innerHTML = 'x';  
         newIten.appendChild(newItenButton);         
         
@@ -42,9 +51,4 @@ button.onclick = function(){
         listItens.appendChild(newIten);
         id++;
     }
-}
-
-function removeIten()
-{
-    return false;
 }
